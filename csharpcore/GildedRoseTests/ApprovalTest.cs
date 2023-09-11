@@ -1,13 +1,13 @@
 using System;
 using System.IO;
 using System.Text;
-using ApprovalTests;
-using ApprovalTests.Reporters;
 using NUnit.Framework;
+using VerifyTests;
+using VerifyNUnit;
 
 namespace GildedRoseTests;
 
-[UseReporter(typeof(DiffReporter))]
+
 [TestFixture]
 public class ApprovalTest
 {
@@ -20,7 +20,7 @@ public class ApprovalTest
 
         TextTestFixture.Main(new string[] { });
         var output = fakeOutput.ToString();
-
-        Approvals.Verify(output);
+        Verifier.Verify(output);
+        //return Verify(output);
     }
 }
