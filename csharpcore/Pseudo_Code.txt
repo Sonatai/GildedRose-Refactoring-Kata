@@ -1,0 +1,30 @@
+Pseudo Code
+
+IF NOT "Aged Brie" AND NOT "Backstage passes to a TAFKAL80ETC concert"
+    IF Quality > 0
+        IF NOT "Sulfuras, Hand of Ragnaros"
+            Quality - 1
+ELSE Quality < 50
+    Quality + 1
+    IF IS "Backstage passes to a TAFKAL80ETC concert"
+        IF SellIn < 11
+            IF Quality < 50
+                Quality + 1
+        IF SellIn < 6
+            IF Quality < 50
+                Quality + 1
+
+IF NOT "Sulfuras, Hand of Ragnaros"
+    SellIn - 1
+
+IF SellIn < 0
+    IF NOT "Aged Brie"
+        IF NOT "Backstage passes to a TAFKAL80ETC concert"
+            IF Quality > 0
+                IF NOT "Sulfuras, Hand of Ragnaros"
+                    Quality - 1
+        ELSE 
+           Quality = 0 
+    ELSE
+        IF Quality < 0
+            Quality + 1
