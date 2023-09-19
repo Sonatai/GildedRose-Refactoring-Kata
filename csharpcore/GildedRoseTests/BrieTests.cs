@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using GildedRoseKata;
+using GildedRose;
 using NUnit.Framework;
 
 namespace GildedRoseTests;
