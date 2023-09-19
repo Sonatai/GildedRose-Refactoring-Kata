@@ -1,3 +1,4 @@
-* Pseudo Code schreiben
-  * Test Cases ableiten
-  * Unit Tests schreiben
+* Code / Business Requirement verstehen
+    * Test Cases ableiten
+    * Unit Tests schreiben
+*
