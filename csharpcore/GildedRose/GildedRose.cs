@@ -13,12 +13,13 @@ public class GildedRose
 
     public void UpdateQuality()
     {
-        foreach (var item in _items)
+        foreach (Item item in _items)
         {
             if (item.Name == "Sulfuras, Hand of Ragnaros")
             {
                 //Nothing happen here :)
-            } else if (item.Name == "Aged Brie")
+            }
+            else if (item.Name == "Aged Brie")
             {
                 if (item.Quality < 50)
                 {
@@ -30,9 +31,12 @@ public class GildedRose
                 if (item.SellIn < 0)
                 {
                     if (item.Quality < 50)
+                    {
                         item.Quality += 1;
+                    }
                 }
-            } else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            }
+            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
             {
                 if (item.Quality < 50)
                 {
@@ -40,12 +44,20 @@ public class GildedRose
 
 
                     if (item.SellIn < 11)
+                    {
                         if (item.Quality < 50)
+                        {
                             item.Quality += 1;
+                        }
+                    }
 
                     if (item.SellIn < 6)
+                    {
                         if (item.Quality < 50)
+                        {
                             item.Quality += 1;
+                        }
+                    }
                 }
 
                 item.SellIn -= 1;
@@ -54,18 +66,22 @@ public class GildedRose
                 {
                     item.Quality = 0;
                 }
-            } else
+            }
+            else
             {
                 if (item.Quality > 0)
+                {
                     item.Quality -= 1;
-
+                }
 
                 item.SellIn -= 1;
 
                 if (item.SellIn < 0)
                 {
                     if (item.Quality > 0)
+                    {
                         item.Quality -= 1;
+                    }
                 }
             }
         }
