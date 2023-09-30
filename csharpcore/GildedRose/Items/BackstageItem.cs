@@ -2,7 +2,7 @@
 
 namespace GildedRose.Items
 {
-    public class BackstageItem : IItem, IUpdateableItem
+    public class BackstageItem : IUpdateableItem
     {
         public string Name { get; set; }
         public int SellIn { get; set; }

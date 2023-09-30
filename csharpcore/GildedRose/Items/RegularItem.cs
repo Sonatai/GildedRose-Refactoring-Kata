@@ -3,7 +3,7 @@ using System;
 
 namespace GildedRose.Items
 {
-    public class RegularItem : IItem, IUpdateableItem
+    public class RegularItem : IUpdateableItem
     {
         public string Name { get; set; }
         public int SellIn { get; set; }

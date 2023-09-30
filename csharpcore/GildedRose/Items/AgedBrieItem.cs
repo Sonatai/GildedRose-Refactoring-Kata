@@ -2,7 +2,7 @@
 
 namespace GildedRose.Items
 {
-    public class AgedBrieItem : IItem, IUpdateableItem
+    public class AgedBrieItem : IUpdateableItem
     {
         public string Name { get; set; }
         public int SellIn { get; set; }
