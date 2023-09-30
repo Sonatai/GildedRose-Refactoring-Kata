@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FluentAssertions;
-using GildedRose;
+﻿using FluentAssertions;
+using GildedRose.Interfaces;
+using GildedRose.Items;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GildedRoseTests;
 
@@ -20,14 +21,17 @@ public class NormalItemTests
     public void UpdateNormalItem1()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Great Platypus (Pet)", SellIn = 30, Quality = 43 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new RegularItem("Great Platypus (Pet)",30,43)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Great Platypus (Pet)");
         item.Quality.Should().Be(42);
         item.SellIn.Should().Be(29);
@@ -37,14 +41,17 @@ public class NormalItemTests
     public void UpdateNormalItem2()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Great Platypus (Pet)", SellIn = 1, Quality = 44 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new RegularItem("Great Platypus (Pet)",1,44)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Great Platypus (Pet)");
         item.Quality.Should().Be(43);
         item.SellIn.Should().Be(0);
@@ -54,14 +61,17 @@ public class NormalItemTests
     public void UpdateNormalItem3()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Great Platypus (Pet)", SellIn = 0, Quality = 44 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new RegularItem("Great Platypus (Pet)",0,44)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Great Platypus (Pet)");
         item.Quality.Should().Be(42);
         item.SellIn.Should().Be(-1);
@@ -71,14 +81,17 @@ public class NormalItemTests
     public void UpdateNormalItem4()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Great Platypus (Pet)", SellIn = 30, Quality = 0 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new RegularItem("Great Platypus (Pet)",30,0)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Great Platypus (Pet)");
         item.Quality.Should().Be(0);
         item.SellIn.Should().Be(29);
@@ -88,14 +101,17 @@ public class NormalItemTests
     public void UpdateNormalItem5()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Great Platypus (Pet)", SellIn = 1, Quality = 0 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new RegularItem("Great Platypus (Pet)",1,0)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Great Platypus (Pet)");
         item.Quality.Should().Be(0);
         item.SellIn.Should().Be(0);

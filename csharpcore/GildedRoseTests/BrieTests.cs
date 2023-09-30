@@ -1,8 +1,9 @@
+using FluentAssertions;
+using GildedRose.Interfaces;
+using GildedRose.Items;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
-using GildedRose;
-using NUnit.Framework;
 
 namespace GildedRoseTests;
 
@@ -20,14 +21,17 @@ public class BrieTests
     public void UpdateBrieItem1()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Aged Brie", SellIn = 11, Quality = 41 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new AgedBrieItem(11,41)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Aged Brie");
         item.SellIn.Should().Be(10);
         item.Quality.Should().Be(42);
@@ -37,14 +41,17 @@ public class BrieTests
     public void UpdateBrieItem2()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Aged Brie", SellIn = 11, Quality = 50 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new AgedBrieItem(11,50)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Aged Brie");
         item.SellIn.Should().Be(10);
         item.Quality.Should().Be(50);
@@ -54,14 +61,17 @@ public class BrieTests
     public void UpdateBrieItem3()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Aged Brie", SellIn = 0, Quality = 41 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem> {
+            new AgedBrieItem(0,41)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Aged Brie");
         item.SellIn.Should().Be(-1);
         item.Quality.Should().Be(43);

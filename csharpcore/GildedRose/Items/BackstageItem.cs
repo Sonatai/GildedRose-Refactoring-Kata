@@ -1,5 +1,4 @@
 ﻿using GildedRose.Interfaces;
-using System;
 
 namespace GildedRose.Items
 {
@@ -11,49 +10,49 @@ namespace GildedRose.Items
 
         public BackstageItem(int sellIn, int quality)
         {
-            if (sellIn < 0)
-            {
-                throw new ArgumentOutOfRangeException($"SellIn must be bigger than 0");
-            }
-
-            if (!QualityLimits.CheckIfQualityIsInLimit(quality))
-            {
-                throw new ArgumentOutOfRangeException($"Quality must between ${QualityLimits.QUALITY_LOWER_LIMIT} and {QualityLimits.QUALITY_UPPER_LIMIT}");
-            }
-
             Name = "Backstage passes to a TAFKAL80ETC concert";
             SellIn = sellIn;
             Quality = quality;
-
         }
 
         public void Update()
         {
+            if (Quality <= QualityLimits.QUALITY_UPPER_LIMIT && SellIn >= 0)
+            {
+                UpdateBeforeSellIn();
+            }
 
             SellIn -= 1;
+
             if (Quality <= QualityLimits.QUALITY_UPPER_LIMIT)
             {
-                UpdateQuality();
+                UpdateAfterSellIn();
             }
         }
 
-        private void UpdateQuality()
+        private void UpdateBeforeSellIn()
+        {
+            if (SellIn < 6)
+            {
+                Quality += 2;
+            }
+            else if (SellIn < 11)
+            {
+                Quality += 1;
+            }
+
+            EnsureQualityLimit();
+        }
+
+        private void UpdateAfterSellIn()
         {
             if (SellIn < 0)
             {
                 Quality = 0;
             }
-            else if (Quality >= 11)
+            else
             {
                 Quality += 1;
-            }
-            else if (SellIn < 11)
-            {
-                Quality += 2;
-            }
-            else if (SellIn < 6)
-            {
-                Quality += 3;
             }
 
             EnsureQualityLimit();

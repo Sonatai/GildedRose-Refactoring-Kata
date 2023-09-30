@@ -16,16 +16,6 @@ namespace GildedRose.Items
                 throw new ArgumentException("Name can't be null or empty");
             }
 
-            if (sellIn < 0)
-            {
-                throw new ArgumentOutOfRangeException($"SellIn must be bigger than 0");
-            }
-
-            if (!QualityLimits.CheckIfQualityIsInLimit(quality))
-            {
-                throw new ArgumentOutOfRangeException($"Quality must between ${QualityLimits.QUALITY_LOWER_LIMIT} and {QualityLimits.QUALITY_UPPER_LIMIT}");
-            }
-
             Name = name;
             SellIn = sellIn;
             Quality = quality;

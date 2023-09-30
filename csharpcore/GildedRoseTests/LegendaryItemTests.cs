@@ -1,8 +1,9 @@
+using FluentAssertions;
+using GildedRose.Interfaces;
+using GildedRose.Items;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
-using GildedRose;
-using NUnit.Framework;
 
 namespace GildedRoseTests;
 
@@ -20,14 +21,18 @@ public class LegendaryItemTests
     public void UpdateLegendaryItem1()
     {
         //Arrange
-        IList<Item> items = new List<Item> { new() { Name = "Sulfuras, Hand of Ragnaros", SellIn = 30, Quality = 44 } };
-        var app = new GildedRose.GildedRose(items);
+        IList<IItem> items = new List<IItem>
+        {
+            new SulfurasItem(30,44)
+        };
+
+        GildedRose.GildedRose app = new(items);
 
         //Act
         app.UpdateQuality();
 
         //Assert
-        var item = items.First();
+        IItem item = items.First();
         item.Name.Should().Be("Sulfuras, Hand of Ragnaros");
         item.Quality.Should().Be(44);
         item.SellIn.Should().Be(30);
