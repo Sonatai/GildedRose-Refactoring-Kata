@@ -17,17 +17,11 @@ namespace GildedRose.Items
 
         public void Update()
         {
-            if (Quality <= QualityLimits.QUALITY_UPPER_LIMIT && SellIn >= 0)
-            {
-                UpdateBeforeSellIn();
-            }
+            UpdateBeforeSellIn();
 
             SellIn -= 1;
 
-            if (Quality <= QualityLimits.QUALITY_UPPER_LIMIT)
-            {
-                UpdateAfterSellIn();
-            }
+            UpdateAfterSellIn();
         }
 
         private void UpdateBeforeSellIn()

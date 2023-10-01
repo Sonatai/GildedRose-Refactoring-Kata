@@ -24,10 +24,7 @@ namespace GildedRose.Items
         public void Update()
         {
             SellIn -= 1;
-            if (Quality > QualityLimits.QUALITY_LOWER_LIMIT)
-            {
-                UpdateQuality();
-            }
+            UpdateQuality();
         }
 
         private void UpdateQuality()
