@@ -5,7 +5,7 @@ namespace GildedRose.Items
 {
     public class RegularItem : IUpdateableItem
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
         public int SellIn { get; set; }
         public int Quality { get; set; }
 

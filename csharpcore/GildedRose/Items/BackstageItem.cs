@@ -4,9 +4,9 @@ namespace GildedRose.Items
 {
     public class BackstageItem : IUpdateableItem
     {
-        public string Name { get; set; }
-        public int SellIn { get; set; }
-        public int Quality { get; set; }
+        public string Name { get; private set; }
+        public int SellIn { get; private set; }
+        public int Quality { get; private set; }
 
         public BackstageItem(int sellIn, int quality)
         {
