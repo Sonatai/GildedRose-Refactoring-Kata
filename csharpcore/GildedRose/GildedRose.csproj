@@ -4,10 +4,4 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="..\mein_gedankengang.md">
-      <Link>mein_gedankengang.md</Link>
-    </Content>
-  </ItemGroup>
-
 </Project>
